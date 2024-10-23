@@ -8729,7 +8729,7 @@ p {
 /* Container for the logos */
 .logo-container {
   width: 100%; /* Full container width */
-  overflow:; /* Hide logos outside the view */
+  overflow:inherit; /* Hide logos outside the view */
   display: flex;
   justify-content: center;
   align-items: center;
