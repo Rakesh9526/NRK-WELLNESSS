@@ -8432,7 +8432,7 @@ p {
   
   .logo-container {
     flex: 1 1 200px; /* Increased flex-basis for larger logos */
-    max-width: 300px; /* Increased max-width for larger logos */
+    /* max-width: 300px; Increased max-width for larger logos */
     text-align: center;
   }
   
@@ -8726,10 +8726,10 @@ p {
 }
 
 
-/* Container for the logos */
+/* Container for logos */
 .logo-container {
-  width: 100%; /* Full container width */
-  overflow:inherit; /* Hide logos outside the view */
+  width: 100%; /* Full viewport width */
+  overflow: hidden; /* Hide logos outside the view */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -8747,22 +8747,17 @@ p {
   transform: translateX(0); /* Start position */
 }
 
-/* Styling for each logo */
-.logo-row img {
-  width: 100px; /* Set logo width */
-  height: auto;
-  object-fit: contain;
-}
 
-/* Scrolling animation */
+/* Keyframes for the scroll animation */
 @keyframes scroll {
   0% {
-      transform: translateX(calc(100% - 100vw)); /* Start from outside the viewport */
+    transform: translateX(0); /* Start from the container */
   }
   100% {
-      transform: translateX(-100%); /* End at the beginning of the row */
+    transform: translateX(calc(-150px * 13)); /* Move left by half the row width */
   }
 }
+
 
 
 .slider-area {
