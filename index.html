@@ -1235,7 +1235,7 @@
 </script>
 
 <script>
-    const images = [
+const images = [
     'assets/img/download.png',  // First image
     'assets/img/f-3.png',  // Second image
     'assets/img/b-3.png'  // Third image
@@ -1246,21 +1246,25 @@ const slider = document.getElementById('slider');
 
 // Function to change background images with fade effect
 function changeBackgroundImage() {
-    // Add fade class to trigger the fade-out effect
-    slider.classList.remove('fade');
-    
+    // Add fade-out effect by reducing opacity
+    slider.classList.add('fade-out');
+
     setTimeout(() => {
-        // Change the background image after the fade-out
+        // Change the background image after fade-out is complete
         slider.style.backgroundImage = `url(${images[currentIndex]})`;
-        
-        // Trigger fade-in by re-adding the class
-        setTimeout(() => {
-            slider.classList.add('fade');
-        }, 100); // Small delay to ensure the image has changed before fading in
-       
+
+        // Remove fade-out and add fade-in class to trigger the fade-in effect
+        slider.classList.remove('fade-out');
+        slider.classList.add('fade-in');
+
         // Move to the next image index
         currentIndex = (currentIndex + 1) % images.length;
-    }, 500); // 500ms delay between fade-out and fade-in
+
+        // Ensure the fade-in effect is completed before the next change
+        setTimeout(() => {
+            slider.classList.remove('fade-in');
+        }, 500); // Duration of fade-in effect
+    }, 500); // Duration of fade-out effect
 }
 
 // Set an interval to change the image every 5 seconds
@@ -1268,8 +1272,7 @@ setInterval(changeBackgroundImage, 5000);
 
 // Initialize with the first image
 slider.style.backgroundImage = `url(${images[0]})`;
-slider.classList.add('fade');  // Initially show the first image with fade-in effect
-
+slider.classList.add('fade-in');
 </script>
 
     </body>
